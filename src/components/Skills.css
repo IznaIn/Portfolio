@@ -65,6 +65,14 @@
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+  
+  .skill-item {
+    padding: 16px 20px;
+  }
+  
+  .skill-name {
+    font-size: 0.95rem;
   }
 }

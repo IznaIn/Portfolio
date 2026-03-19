@@ -134,16 +134,30 @@
 
 @media (max-width: 768px) {
   .experience-timeline {
-    padding-left: 24px;
+    padding-left: 30px;
   }
   
   .timeline-dot {
-    left: -32px;
+    left: -38px;
     width: 14px;
     height: 14px;
+    top: 24px;
   }
   
   .exp-card {
     padding: 24px;
+  }
+  
+  .exp-title-group h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-timeline {
+    padding-left: 20px;
+  }
+  .timeline-dot {
+    left: -28px;
   }
 }

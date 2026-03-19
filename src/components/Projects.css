@@ -96,5 +96,14 @@
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .project-card {
+    padding: 24px;
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
   }
 }

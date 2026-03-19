@@ -38,6 +38,12 @@ body {
   line-height: 1.6;
 }
 
+.app-container {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -96,9 +102,21 @@ ul {
   padding: 0 24px;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
 .section {
   padding: 100px 0;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
 }
 
 .flex-center {
@@ -130,5 +148,13 @@ ul {
   height: 500px;
   background: var(--accent-3);
   bottom: -100px;
-  right: -200px;
+  right: -100px;
+}
+
+@media (max-width: 768px) {
+  .bgo-1, .bgo-2 {
+    width: 300px;
+    height: 300px;
+    filter: blur(60px);
+  }
 }
