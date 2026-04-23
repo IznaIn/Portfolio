@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { FaGraduationCap, FaCode } from 'react-icons/fa';
 import './About.css';
 
 const About = () => {
+  const [showResume, setShowResume] = useState(false);
   const scrollVariant = {
     hidden: { opacity: 0, y: 50 },
     visible: { 
@@ -36,6 +37,29 @@ const About = () => {
                 into a deep dive into the MERN stack. I love solving complex problems, writing clean code, and 
                 creating intuitive user experiences.
               </p>
+              <button 
+                className="btn btn-outline" 
+                onClick={() => setShowResume(!showResume)}
+                style={{ marginBottom: '20px' }}
+              >
+                {showResume ? 'Hide Resume Preview' : 'Preview My Resume'}
+              </button>
+
+              {showResume && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  className="resume-preview-container"
+                >
+                  <iframe 
+                    src="/M-Resume.pdf" 
+                    width="100%" 
+                    height="600px" 
+                    title="Resume Preview"
+                    style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}
+                  />
+                </motion.div>
+              )}
             </div>
             
             <div className="education-cards">

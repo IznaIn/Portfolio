@@ -22,6 +22,7 @@ const Navbar = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Resume', href: '/M-Resume.pdf', download: true },
   ];
 
   return (
@@ -35,7 +36,11 @@ const Navbar = () => {
         <ul className="nav-links">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a href={link.href} className="nav-link">
+              <a 
+                href={link.href} 
+                className="nav-link"
+                download={link.download}
+              >
                 {link.name}
               </a>
             </li>
@@ -66,6 +71,7 @@ const Navbar = () => {
                   <a
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
+                    download={link.download}
                   >
                     {link.name}
                   </a>

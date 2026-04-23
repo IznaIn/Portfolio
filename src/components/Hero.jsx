@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import profilePic from '../assets/profile.jpeg';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaEye } from 'react-icons/fa';
+import profilePic from '../assets/p.jpeg';
 import './Hero.css';
 
 const Hero = () => {
@@ -51,7 +51,12 @@ const Hero = () => {
 
             <motion.div variants={itemVariants} className="hero-cta-group">
               <a href="#projects" className="btn btn-primary">View My Work</a>
-              <a href="#contact" className="btn btn-outline">Let's Talk</a>
+              <a href="/M-Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline flex-center gap-2">
+                <FaEye /> View CV
+              </a>
+              <a href="/M-Resume.pdf" download className="btn btn-text flex-center gap-2">
+                <FaDownload /> Download
+              </a>
             </motion.div>
 
             <motion.div variants={itemVariants} className="hero-socials">
