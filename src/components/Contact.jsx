@@ -34,7 +34,7 @@ const Contact = () => {
           text: "Thank you for reaching out. I will get back to you soon.",
           icon: "success",
           confirmButtonColor: "var(--accent-1)",
-          background: "var(--bg-lighter)",
+          background: "var(--bg-color)",
           color: "var(--text-primary)"
         });
         event.target.reset();
@@ -44,7 +44,7 @@ const Contact = () => {
           text: "Something went wrong. Please try again later.",
           icon: "error",
           confirmButtonColor: "var(--accent-1)",
-          background: "var(--bg-lighter)",
+          background: "var(--bg-color)",
           color: "var(--text-primary)"
         });
       }
@@ -54,7 +54,7 @@ const Contact = () => {
         text: "Network error. Please try again later.",
         icon: "error",
         confirmButtonColor: "var(--accent-1)",
-        background: "var(--bg-lighter)",
+        background: "var(--bg-color)",
         color: "var(--text-primary)"
       });
     } finally {

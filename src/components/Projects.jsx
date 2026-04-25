@@ -1,37 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Tilt from 'react-parallax-tilt';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaFlask, FaCheckCircle, FaLaptopCode, FaChartBar, FaUserGraduate, FaHospitalAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './Projects.css';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Hospital Management System',
-      description: 'A comprehensive management system for hospitals to handle patient records, doctor appointments, and administrative tasks.',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind'],
+      title: 'Hospital Management',
+      description: 'Streamlining clinical and administrative healthcare workflows.',
+      features: ['Patient Records', 'Appointment Portal', 'Pharma Billing', 'Ward Mgmt'],
+      tags: ['React', 'NodeJS'],
       github: '#',
-      live: 'https://hmsedumix.vercel.app/'
+      live: 'https://hmsedumix.vercel.app/',
+      status: 'Live',
+      icon: <FaHospitalAlt />
     },
     {
-      title: 'School Management System',
-      description: 'A multi-role web application with dedicated portals for Admins, Teachers, and Students, built using Redux and Material UI for a seamless experience.',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux', 'MUI'],
+      title: 'School Management',
+      description: 'Integrated platform for education administration and learning.',
+      features: ['Secure Portals', 'Automated Results', 'Attendance', 'Fee Mgmt'],
+      tags: ['React', 'Redux'],
       github: '#',
-      live: '#'
+      live: '#',
+      status: 'Testing Mode',
+      icon: <FaUserGraduate />
+    },
+    {
+      title: 'Poultry Management',
+      description: 'Data-driven precision livestock farming for modern poultry.',
+      features: ['Batch Monitoring', 'Health Alerts', 'Sales Dashboard', 'Feed Tracker'],
+      tags: ['MERN', 'ChartJS'],
+      github: '#',
+      live: '#',
+      status: 'Testing Mode',
+      icon: <FaChartBar />
     }
   ];
 
-  const handleLinkClick = (e, link) => {
-    if (link === '#') {
+  const handleLinkClick = (e, project) => {
+    if (project.live === '#') {
       e.preventDefault();
       Swal.fire({
-        title: "Project In Progress",
-        text: "The live demo for this project is currently unavailable as it's still being worked on. Please check back later!",
+        title: "Project Under Testing",
+        text: `The ${project.title} is currently in ${project.status}. Live demo coming soon!`,
         icon: "info",
         confirmButtonColor: "var(--accent-1)",
-        background: "var(--bg-lighter)",
+        background: "var(--bg-color)",
         color: "var(--text-primary)"
       });
     }
@@ -41,20 +56,20 @@ const Projects = () => {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1, 
-      transition: { staggerChildren: 0.3 } 
+      transition: { staggerChildren: 0.1 } 
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
   return (
     <section id="projects" className="section relative">
       <div className="container">
         <div className="section-header">
-          <h2 className="title-medium">Featured <span className="text-gradient">Projects</span></h2>
+          <h2 className="title-medium">Recent <span className="text-gradient">Creations</span></h2>
           <div className="line-dec"></div>
         </div>
 
@@ -67,29 +82,66 @@ const Projects = () => {
         >
           {projects.map((project, index) => (
             <motion.div variants={itemVariants} key={index} className="project-tilt-wrapper">
-              <motion.div 
-                className="project-tilt-card"
-                whileHover={{ scale: 1.03, rotateX: 2, rotateY: -2 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="glass-panel project-card">
-                  <div className="project-content">
+              <div className="glass-panel project-card">
+                <div className="project-content">
+                  <div className="project-status-box">
+                    {project.status === 'Live' ? <FaCheckCircle className="status-live" /> : <FaFlask className="status-test" />}
+                    <span>{project.status}</span>
+                  </div>
+                  
+                  <div className="project-header-row">
+                    <div className="project-icon-box">{project.icon}</div>
                     <h3 className="project-title">{project.title}</h3>
-                    <p className="project-desc text-secondary">{project.description}</p>
-                    <div className="project-tags">
+                  </div>
+                  
+                  <p className="project-desc text-secondary">{project.description}</p>
+                  
+                  <div className="project-features-list">
+                    {project.features.map((feature, idx) => (
+                      <div key={idx} className="feature-pill">
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="project-links-row">
+                    <div className="tags-mini">
                       {project.tags.map((tag, idx) => (
-                        <span key={idx} className="project-tag">{tag}</span>
+                        <span key={idx} className="tag-mini">{tag}</span>
                       ))}
                     </div>
-                    <div className="project-links">
-                      <a href={project.github} onClick={(e) => handleLinkClick(e, project.github)} className="project-link" title="GitHub Code"><FaGithub /></a>
-                      <a href={project.live} onClick={(e) => handleLinkClick(e, project.live)} className="project-link" title="Live Demo"><FaExternalLinkAlt /></a>
+                    <div className="link-group">
+                      <a href={project.github} onClick={(e) => handleLinkClick(e, project)} className="link-small" title="GitHub"><FaGithub /></a>
+                      <a href={project.live} onClick={(e) => handleLinkClick(e, project)} className="link-small" title="Live Preview"><FaExternalLinkAlt /></a>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
+
+          {/* Large Wide Box - Technical Insight */}
+          <motion.div variants={itemVariants} className="project-tilt-wrapper bento-wide">
+            <div className="glass-panel project-card flex-row-bento">
+              <div className="bento-text-area">
+                <div className="bento-badge">Tech Expertise</div>
+                <h3>Architecting Scalability</h3>
+                <p className="text-secondary">Using the MERN stack to deliver high-performance management solutions across clinical, educational, and agricultural sectors.</p>
+              </div>
+              <div className="bento-icon-grid">
+                <FaLaptopCode className="bento-large-icon" />
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="project-tilt-wrapper">
+            <div className="glass-panel project-card flex-center">
+              <div className="stats-box">
+                <span className="stats-number text-gradient">100%</span>
+                <span className="stats-label">Code Integrity</span>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -7,11 +7,11 @@ import './About.css';
 const About = () => {
   const [showResume, setShowResume] = useState(false);
   const scrollVariant = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: "easeOut" } 
+      transition: { duration: 0.6, ease: "easeOut" } 
     }
   };
 
@@ -56,7 +56,7 @@ const About = () => {
                     width="100%" 
                     height="600px" 
                     title="Resume Preview"
-                    style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ borderRadius: '12px', border: '1px solid var(--glass-border)' }}
                   />
                 </motion.div>
               )}
@@ -66,7 +66,7 @@ const About = () => {
               <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} perspective={1000} scale={1.05} transitionSpeed={2000} className="edu-tilt-card">
                 <motion.div 
                   className="glass-panel edu-card"
-                  whileHover={{ boxShadow: "0 10px 30px rgba(0,242,254,0.15)" }}
+                  whileHover={{ boxShadow: "0 10px 30px rgba(14, 165, 233, 0.1)" }}
                 >
                   <div className="edu-icon"><FaGraduationCap /></div>
                   <div className="edu-info">
@@ -84,7 +84,7 @@ const About = () => {
               <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} perspective={1000} scale={1.05} transitionSpeed={2000} className="edu-tilt-card">
                 <motion.div 
                   className="glass-panel edu-card"
-                  whileHover={{ boxShadow: "0 10px 30px rgba(240,147,251,0.15)" }}
+                  whileHover={{ boxShadow: "0 10px 30px rgba(139, 92, 246, 0.1)" }}
                 >
                   <div className="edu-icon"><FaCode /></div>
                   <div className="edu-info">

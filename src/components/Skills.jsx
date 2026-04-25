@@ -16,11 +16,11 @@ const Skills = () => {
   ];
 
   const scrollVariant = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8 } 
+      transition: { duration: 0.6 } 
     }
   };
 
@@ -39,25 +39,52 @@ const Skills = () => {
           </div>
 
           <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <Tilt key={index} tiltMaxAngleX={15} tiltMaxAngleY={15} perspective={1000} scale={1.05} transitionSpeed={2000} className="skill-tilt-wrapper">
-                <div className="skill-item">
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percentage text-secondary">{skill.level}%</span>
+            {/* Frontend Skills */}
+            <div className="glass-panel skills-category bento-large">
+              <h3>Frontend Development</h3>
+              <div className="skills-list">
+                {skills.filter(s => ['React.js', 'HTML5 & CSS3', 'Tailwind CSS', 'JavaScript (ES6+)'].includes(s.name)).map((skill, index) => (
+                  <div key={index} className="skill-item-mini">
+                    <div className="skill-info">
+                      <span className="skill-name">{skill.name}</span>
+                      <span className="skill-percentage text-secondary">{skill.level}%</span>
+                    </div>
+                    <div className="skill-bar-bg"><div className="skill-bar-fill" style={{ width: `${skill.level}%` }}></div></div>
                   </div>
-                  <div className="skill-bar-bg">
-                    <motion.div 
-                      className="skill-bar-fill"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, delay: 0.2 + (index * 0.1), ease: "easeOut" }}
-                    ></motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Backend Skills */}
+            <div className="glass-panel skills-category">
+              <h3>Backend</h3>
+              <div className="skills-list">
+                {skills.filter(s => ['Node.js', 'Express.js', 'MongoDB'].includes(s.name)).map((skill, index) => (
+                  <div key={index} className="skill-item-mini">
+                    <div className="skill-info">
+                      <span className="skill-name">{skill.name}</span>
+                      <span className="skill-percentage text-secondary">{skill.level}%</span>
+                    </div>
+                    <div className="skill-bar-bg"><div className="skill-bar-fill" style={{ width: `${skill.level}%` }}></div></div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tools & Others */}
+            <div className="glass-panel skills-category">
+              <h3>Tools</h3>
+              <div className="skills-list">
+                <div className="skill-item-mini">
+                  <div className="skill-info"><span className="skill-name">Git & GitHub</span></div>
+                  <div className="skill-bar-bg"><div className="skill-bar-fill" style={{ width: '75%' }}></div></div>
                 </div>
-              </Tilt>
-            ))}
+                <div className="skill-item-mini">
+                  <div className="skill-info"><span className="skill-name">VS Code</span></div>
+                  <div className="skill-bar-bg"><div className="skill-bar-fill" style={{ width: '90%' }}></div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
